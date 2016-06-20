@@ -1,0 +1,74 @@
+﻿@using Microsoft.Ajax.Utilities
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Coffee</title>
+        @Styles.Render("~/bundles/styles")
+
+        <!--Google Fonts-->
+		<link href='http://fonts.googleapis.com/css?family=Molengo' rel='stylesheet' type='text/css'>
+        
+        <style>
+            body{
+                background-image:url(../../Content/img/is-coffee-paleo.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: bottom;
+                background-attachment: fixed;
+            }
+        </style>
+    </head>
+    <body ng-app="coffeeshop">
+
+        <div ng-cloak>
+            <md-content>
+                <br>
+                <md-toolbar class="md-hue-2">
+                    <div class="md-toolbar-tools">
+                        <md-button class="md-icon-button" aria-label="Home">
+                            <a ui-sref="main">
+                                <md-button class="md-icon-button" aria-label="Home">
+                            </a> 
+                        </md-button>
+                        <h2>
+                            <span>Welcome to Serge's Coffee Shop</span>
+                        </h2>
+                        <span flex></span>
+                        <a ui-sref="main" href="javascript:void(0);">
+                            <md-button class="md-icon-button" aria-label="Favorite">
+                                <ng-md-icon icon="home" style="fill: wheat" size="25"></ng-md-icon>
+                            </md-button>
+                        </a>
+                        
+                        <md-button class="md-icon-button" aria-label="More">
+                            <ng-md-icon icon="more_vert" style="fill: wheat" size="25"></ng-md-icon> 
+                        </md-button>
+                    </div>
+                </md-toolbar>
+                
+            </md-content>
+        </div>
+
+        
+        @RenderBody()
+            @Scripts.Render("~/bundles/frameworks")
+            @Scripts.Render("~/bundles/webclient")
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.0/angular-material-icons.min.js"></script> 
+       
+        <script type="text/javascript">
+            window.globals = {
+                views: {
+                    registry: @Html.Raw(ViewBag.PageRegistry??"{'':''}"),
+                    get: function(view) {
+                        return view + "?v=" + this.registry["\"" + view + "\""];
+                    }
+                }
+            };
+        </script>
+        
+        
+    </body>
+</html>

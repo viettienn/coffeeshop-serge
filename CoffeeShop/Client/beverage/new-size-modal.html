@@ -1,0 +1,24 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <a href="javascript:void(0);" class="close" ng-click="modal.cancel()"><span aria-hidden="true">&times;</span></a>
+        <h4 class="modal-title">New Size</h4>
+    </div>
+    <div class="alert alert-warning text-left modal-error-message" ng-if="modal.errorMessage">
+        <p>{{modal.errorMessage}}</p>
+    </div>
+    <div class="modal-body">
+        <div layout="column" layout-padding>
+            <md-content class="autoScroll text-center">
+
+                <md-input-container class="md-icon-float md-icon-right md-block">
+                    <label>Name</label>
+                    <input type="text" ng-model="modal.size.Name" />
+                </md-input-container>
+
+                <span>
+                    <md-button class="md-raised" ng-click="modal.save()">Add New Size</md-button>
+                </span>
+            </md-content>
+        </div>
+    </div>
+</div>

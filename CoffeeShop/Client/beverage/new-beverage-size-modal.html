@@ -1,0 +1,39 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <a href="javascript:void(0);" class="close" ng-click="modal.cancel()"><span aria-hidden="true">&times;</span></a>
+        <h4 class="modal-title">
+            {{(modal.add?"Add ":"Remove " )+  modal.size.Name + " "}} 
+            {{(modal.add?"to ":"from ") +  modal.beverage.Name}}
+        </h4>
+    </div>
+    <div class="alert alert-warning text-left modal-error-message" ng-if="modal.errorMessage">
+        <p>{{modal.errorMessage}}</p>
+    </div>
+    <div class="modal-body">
+        <div layout="column" layout-padding>
+            <md-content class="autoScroll text-center">
+
+                <md-input-container class="md-icon-float md-icon-right md-block">
+                    <label>Size</label>
+                    <input type="text" ng-model="modal.size.Name" ng-readonly="true" />
+                </md-input-container>
+
+                <md-input-container class="md-icon-float md-icon-right md-block">
+                    <label>Beverage</label>
+                    <input type="text" ng-model="modal.beverage.Name" ng-readonly="true" />
+                </md-input-container>
+
+                <md-input-container ng-if="modal.add" class="md-icon-float md-icon-right md-block">
+                    <label>Price</label>
+                    <input type="number" ng-model="modal.price" step="0.01"/>
+                </md-input-container>
+
+                <span>
+                    <md-button class="md-raised" ng-click="modal.save()" ng-class="{'md-warn':!modal.add}">
+                        {{modal.add?"Add New Size":"Remove Size"}}
+                    </md-button>
+                </span>
+            </md-content>
+        </div>
+    </div>
+</div>

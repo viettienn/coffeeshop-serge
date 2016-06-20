@@ -1,0 +1,47 @@
+﻿<div class="modal-content">
+    <div class="modal-header">
+        <a href="javascript:void(0);" class="close" ng-click="modal.cancel()"><span aria-hidden="true">&times;</span></a>
+        <h4 class="modal-title">{{modal.order.Id==0?"Create new order":"Edit order"}}</h4>
+    </div>
+    <div class="alert alert-warning text-left modal-error-message" ng-if="modal.errorMessage">
+        <p>{{modal.errorMessage}}</p>
+    </div>
+    <div class="modal-body">
+        <div layout="column" layout-padding ng-cloak>
+            <br />
+            
+            <md-content class="autoScroll">
+                <md-input-container class="md-icon-float md-block">
+                    <!-- Use floating label instead of placeholder -->
+                    <label>Beverage</label>
+                    <md-select ng-model="modal.order.BeverageId" ng-change="modal.getSizes()">
+                        <md-option ng-repeat="beverage in modal.beverages" ng-value="{{beverage.Id}}">
+                            {{beverage.Name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-input-container class="md-icon-float md-block">
+                    <!-- Use floating label instead of placeholder -->
+                    <label>Select Size</label>
+                    <md-select ng-model="modal.order.BeverageSizeId" ng-change="modal.getPrice()">
+                        <md-option ng-repeat="beverageSize in modal.beverageSizes" ng-value="{{beverageSize.SizeId}}">
+                            {{beverageSize.Name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-input-container class="md-icon-float md-icon-right md-block">
+                    <label>Price</label>
+                    <ng-md-icon icon="attach_money" style="fill: wheat" size="24"></ng-md-icon> 
+                    <input type="text" value="{{modal.beveragePrice.Price}}" ng-readonly="true"/>
+                </md-input-container>
+                
+            </md-content>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-default" ng-click="modal.cancel()">Cancel</a>
+        <a class="btn btn-primary" ng-click="modal.save()">{{modal.order.Id == 0 ? "Add new order" : "Update order"}}</a>
+    </div>
+</div>

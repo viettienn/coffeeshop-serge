@@ -1,0 +1,78 @@
+﻿<style>
+    .tabsdemoDynamicHeight md-content {
+        background-color: transparent !important;
+    }
+
+        .tabsdemoDynamicHeight md-content md-tabs {
+            background: #f6f6f6;
+            border: 1px solid #e1e1e1;
+        }
+
+            .tabsdemoDynamicHeight md-content md-tabs md-tabs-wrapper {
+                background: white;
+            }
+
+        .tabsdemoDynamicHeight md-content h1:first-child {
+            margin-top: 0;
+        }
+</style>
+<div ng-cloak>
+    <md-content>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Orders list">
+                <md-content class="md-padding">
+                    
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th class="col-lg-6 col-md-6 col-sm-6 col-xs-6">Beverage</th>
+                                <th class="col-lg-6 col-md-6 col-sm-6 col-xs-6">size</th>
+                                <th class="col-lg-6 col-md-6 col-sm-6 col-xs-6">Price</th>
+                                <th class="col-lg-6 col-md-6 col-sm-6 col-xs-6">Purchase date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr ng-repeat="order in orders.ordersList">
+                                <th scope="row">{{$index+1}}</th>
+                                <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{order.BeverageName}}</td>
+                                <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{order.BeverageSize}}</td>
+                                <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6">${{order.Price}}</td>
+                                <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{order.TsCreated | date : 'medium'}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </md-content>
+            </md-tab>
+            <md-tab label="Orders Summary">
+                <md-content class="md-padding">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th class="col-lg-6 col-md-6 col-sm-6 col-xs-6">Beverage</th>
+                                <th class="col-lg-6 col-md-6 col-sm-6 col-xs-6">size</th>
+                                <th class="col-lg-6 col-md-6 col-sm-6 col-xs-6">Total Count</th>
+                                <th class="col-lg-6 col-md-6 col-sm-6 col-xs-6">Total Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr ng-repeat="order in orders.ordersSummary">
+                                <th scope="row">{{$index+1}}</th>
+                                <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{order.BeverageName}}</td>
+                                <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{order.BeverageSize}}</td>
+                                <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{order.TotalCount}}</td>
+                                <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6">${{order.TotalAmount}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </md-content>
+            </md-tab>
+            
+        </md-tabs>
+    </md-content>
+</div>

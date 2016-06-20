@@ -1,0 +1,35 @@
+﻿<md-content class="md-padding">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Beverage</th>
+                <th ng-repeat="s in beverages.sizes">{{s.Name}}</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="beverage in beverages.beveragesList">
+                <th scope="row">{{$index+1}}</th>
+                <td>{{beverage.Name}}</td>
+                <td ng-repeat="size in beverages.sizes">
+                    <span class="col-lg-24 col-md-24">
+                        
+                        <span class="glyphicon col-lg-12 col-md-12" ng-class="beverages.isAvailable(size.Id, beverage.BeveragesSizes)? 'glyphicon-ok text-success' : ' glyphicon-asterisk text-danger'"></span>
+                        <span class="col-lg-12 col-md-12 text-right">
+                            <button class="btn btn-xs btn-default" title="remove size" 
+                                    ng-click="!beverages.isAvailable(size.Id, beverage.BeveragesSizes) ? beverages.add_remove(beverage, size, true) : beverages.add_remove(beverage, size, false)">
+                                <span>{{beverages.getPrice(size.Id,beverage.BeveragesSizes, beverage.BeveragePrices) | currency : fractionSize}}</span>
+                                <span ng-if="!beverages.isAvailable(size.Id, beverage.BeveragesSizes)">Add</span>
+                                <span class="glyphicon" ng-class="beverages.isAvailable(size.Id, beverage.BeveragesSizes)? 'glyphicon-remove text-danger' : ' glyphicon-plus text-success'"></span>
+                            </button>
+                        </span>
+                    </span>
+                    
+                </td>
+                
+            </tr>
+
+        </tbody>
+    </table>
+</md-content>
